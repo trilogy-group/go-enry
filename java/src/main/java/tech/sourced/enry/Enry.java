@@ -252,7 +252,7 @@ public class Enry {
      * Returns type for given language.
      *
      * @param language of the file
-     * @return type
+     * @return type (data, programming, markup, prose)
      */
     public static synchronized String getLanguageType(String language) {
         return toJavaString(nativeLib.GetLanguageType(toGoString(language)));
