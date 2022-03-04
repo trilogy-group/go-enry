@@ -6,6 +6,7 @@ package main
 import "C"
 import "github.com/go-enry/go-enry/v2"
 import "github.com/go-enry/go-enry/v2/data"
+import "github.com/go-enry/go-enry/v2/loc"
 
 //export GetLanguage
 func GetLanguage(filename string, content []byte) string {
@@ -145,6 +146,11 @@ func IsTest(path string) bool {
 //export GetLanguageType
 func GetLanguageType(language string) string {
 	return data.Type(enry.GetLanguageType(language)).String()
+}
+
+//export GetLines
+func GetLines(filename string, content []byte) (total, blank int) {
+	return loc.GetLines(filename, content)
 }
 
 func strSliceCopy(result *[]*C.char, slice []string) {

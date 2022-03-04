@@ -257,4 +257,14 @@ public class Enry {
     public static synchronized String getLanguageType(String language) {
         return toJavaString(nativeLib.GetLanguageType(toGoString(language)));
     }
+
+    /**
+     * Returns loc info of file.
+     *
+     * @param language of the file
+     * @return type (data, programming, markup, prose)
+     */
+    public static synchronized String getLines(String path, byte[] content) {
+        return toJavaBool(nativeLib.IsGenerated(toGoString(path), toGoByteSlice(content)));
+    }
 }
